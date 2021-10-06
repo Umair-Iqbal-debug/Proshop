@@ -4,7 +4,7 @@ import cors from 'cors'
 import connectDB from './config/db.js'
 import dotenv from 'dotenv'
 import colors from 'colors'
-import { errorHandler, notFound } from './middlware/errorMiddleware.js'
+import { errorHandler, notFound } from './middleware/errorMiddleware.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -18,6 +18,8 @@ app.use(
     origin: '*',
   })
 )
+
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.send('request recieved')
